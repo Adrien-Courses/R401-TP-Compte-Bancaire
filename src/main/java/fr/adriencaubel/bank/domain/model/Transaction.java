@@ -1,18 +1,18 @@
 package fr.adriencaubel.bank.domain.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Transaction {
-	private final String fromIban;
-	private final String toIban;
-	private final double montant;
-	private final LocalDateTime timestamp;
+	private String fromIban;
+	private String toIban;
+	private double montant;
+	private LocalDate date;
 
 	public Transaction(String fromIban, String toIban, double montant) {
 		this.fromIban = fromIban;
 		this.toIban = toIban;
 		this.montant = montant;
-		this.timestamp = LocalDateTime.now();
+		this.date = LocalDate.now();
 	}
 
 	public String getFromIban() {
@@ -27,7 +27,7 @@ public class Transaction {
 		return montant;
 	}
 
-	public LocalDateTime getTimestamp() {
-		return timestamp;
+	public LocalDate getDate() {
+		return date;
 	}
 }

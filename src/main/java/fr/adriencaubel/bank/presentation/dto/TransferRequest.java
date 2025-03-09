@@ -1,8 +1,8 @@
-package fr.adriencaubel.bank.presentation;
+package fr.adriencaubel.bank.presentation.dto;
 
 public class TransferRequest {
     private String fromIban;
-    private String toIban;
+    private String toIban; 
     private double amount;
 
     public String getFromIban() {

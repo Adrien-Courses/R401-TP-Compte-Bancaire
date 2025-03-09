@@ -1,13 +1,14 @@
 package fr.adriencaubel.bank.domain.repository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import fr.adriencaubel.bank.domain.model.Transaction;
-import jakarta.ejb.Stateless;
+import jakarta.enterprise.context.ApplicationScoped;
 
-@Stateless
+@ApplicationScoped
 public class FakeTransactionRepository {
 	private final List<Transaction> transactions = new ArrayList<>();
 
@@ -20,7 +21,15 @@ public class FakeTransactionRepository {
 	}
 
 	public List<Transaction> findByIban(String iban) {
-		return transactions.stream().filter(t -> iban.equals(t.getFromIban()) || iban.equals(t.getToIban()))
-				.collect(Collectors.toList());
+		return transactions.stream()
+			.filter(t -> t.getFromIban().equals(iban) || t.getToIban().equals(iban))
+			.collect(Collectors.toList());
+	}
+
+	public List<Transaction> findByIbanAndDateAfter(String iban, LocalDate date) {
+		return transactions.stream()
+			.filter(t -> (t.getFromIban().equals(iban) || t.getToIban().equals(iban))
+				&& !t.getDate().isBefore(date))
+			.collect(Collectors.toList());
 	}
 }
