@@ -48,15 +48,24 @@
 				<artifactId>tomee-maven-plugin</artifactId>
 				<version>10.0.0</version>
 				<configuration>
-					<synchronization>
-						<extensions>
-							<extension>.class</extension>
-						</extensions>
-					</synchronization>
 					<tomeeVersion>10.0.0</tomeeVersion>
 					<tomeeClassifier>plus</tomeeClassifier>
-					<tomeeHttpPort>3363</tomeeHttpPort>
-                	<debugPort>5005</debugPort>
+					<inlinedServerXml>
+						<Server port="1005" shutdown="SHUTDOWN">
+							<Listener
+								className="org.apache.tomee.catalina.ServerListener" />
+							<Listener
+								className="org.apache.catalina.startup.VersionLoggerListener" />
+							<Service name="Catalina">
+								<Connector port="1080" protocol="HTTP/1.1" />
+								<Engine name="Catalina" defaultHost="localhost">
+									<Host name="localhost" appBase="webapps"
+										unpackWARs="true" autoDeploy="true">
+									</Host>
+								</Engine>
+							</Service>
+						</Server>
+					</inlinedServerXml>
 				</configuration>
 			</plugin>
 		</plugins>
