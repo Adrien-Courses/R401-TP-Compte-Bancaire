@@ -51,13 +51,13 @@
 					<tomeeVersion>10.0.0</tomeeVersion>
 					<tomeeClassifier>plus</tomeeClassifier>
 					<inlinedServerXml>
-						<Server port="1005" shutdown="SHUTDOWN">
+						<Server port="10005" shutdown="SHUTDOWN">
 							<Listener
 								className="org.apache.tomee.catalina.ServerListener" />
 							<Listener
 								className="org.apache.catalina.startup.VersionLoggerListener" />
 							<Service name="Catalina">
-								<Connector port="1080" protocol="HTTP/1.1" />
+								<Connector port="10080" protocol="HTTP/1.1" />
 								<Engine name="Catalina" defaultHost="localhost">
 									<Host name="localhost" appBase="webapps"
 										unpackWARs="true" autoDeploy="true">
