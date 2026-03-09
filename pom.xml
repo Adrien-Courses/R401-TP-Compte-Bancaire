@@ -56,7 +56,12 @@
 					<tomeeVersion>10.0.0</tomeeVersion>
 					<tomeeClassifier>plus</tomeeClassifier>
 					<tomeeHttpPort>3363</tomeeHttpPort>
-                	<debugPort>5005</debugPort>
+					<debugPort>5005</debugPort>
+					<reloadOnUpdate>true</reloadOnUpdate>
+					<systemVariables>
+						<openejb.system.apps>true</openejb.system.apps>
+						<tomee.serialization.class.blacklist>-</tomee.serialization.class.blacklist>
+					</systemVariables>
 				</configuration>
 			</plugin>
 		</plugins>
